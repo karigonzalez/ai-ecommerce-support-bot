@@ -13,10 +13,7 @@ Bienvenido/a al repositorio oficial de **SupportBot AI**, una aplicación web in
 - [Vista Previa & Demo](#-vista-previa--demo)
 - [Características Principales](#-características-principales)
 - [Arquitectura Híbrida de Respuestas](#-arquitectura-híbrida-de-respuestas)
-- [Estructura del Proyecto](#-estructura-del-proyecto)
-- [Tecnologías e Integraciones](#-tecnologías-e-integraciones)
-- [Uso Local y Configuración API](#-uso-local-y-configuración-api)
-- [Contacto](#-contacto)
+
 
 ---
 
