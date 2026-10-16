@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupportBot AI | Chatbot Inteligente para E-Commerce</title>
+    <meta name="description" content="Asistente virtual e interfaz de chat inteligente para soporte postventa, seguimiento de pedidos y resolución de FAQs en tiendas e-commerce.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- App Container -->
+    <div class="app-layout">
+        
+        <!-- Sidebar Navigation & Config -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon"><i class="fa-solid fa-robot"></i></div>
+                <div>
+                    <h2>SupportBot AI</h2>
+                    <span class="badge-status"><i class="fa-solid fa-circle text-green"></i> Agente Activo</span>
+                </div>
+            </div>
+
+            <!-- E-Commerce Store Selector -->
+            <div class="config-card">
+                <h3><i class="fa-solid fa-store"></i> Contexto de Tienda</h3>
+                <p class="config-desc">Simulador de tienda e-commerce activa:</p>
+                <div class="store-badge">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <div>
+                        <strong>TechStore Demo</strong>
+                        <small>E-Commerce de Tecnología y Moda</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Key Configuration Modal/Box -->
+            <div class="config-card">
+                <h3><i class="fa-solid fa-key"></i> Integración Gemini API</h3>
+                <p class="config-desc">Ingresa tu clave de API para activar respuestas con Inteligencia Artificial avanzada en tiempo real:</p>
+                <div class="input-group-key">
+                    <input type="password" id="apiKeyInput" placeholder="AIzaSy..." autocomplete="off">
+                    <button type="button" id="saveKeyBtn" class="btn-icon" title="Guardar Key">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                    </button>
+                </div>
+                <small id="keyStatusText" class="key-status-text">Sin clave API (Operando en modo Base de Conocimiento local).</small>
+            </div>
+
+            <!-- Quick Topics Menu -->
+            <div class="config-card">
+                <h3><i class="fa-solid fa-bolt"></i> Consultas Frecuentes</h3>
+                <div class="quick-topics-list">
+                    <button class="topic-item-btn" data-query="¿Cuánto tarda en llegar mi pedido?">
+                        <i class="fa-solid fa-truck-fast"></i> Tiempos de Envío
+                    </button>
+                    <button class="topic-item-btn" data-query="¿Cómo realizo un cambio o devolución?">
+                        <i class="fa-solid fa-rotate-left"></i> Cambios y Devoluciones
+                    </button>
+                    <button class="topic-item-btn" data-query="¿Cuáles son los métodos de pago aceptados?">
+                        <i class="fa-solid fa-credit-card"></i> Métodos de Pago
+                    </button>
+                    <button class="topic-item-btn" data-query="¿Cómo rastreo el estado de mi paquete?">
+                        <i class="fa-solid fa-location-dot"></i> Seguimiento de Pedidos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Clear Chat Button -->
+            <button id="clearChatBtn" class="btn-clear-chat">
+                <i class="fa-solid fa-trash-can"></i> Reiniciar Conversación
+            </button>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-container">
+            
+            <!-- Chat Header -->
+            <header class="chat-header">
+                <div class="bot-info">
+                    <div class="bot-avatar">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <div>
+                        <h1>Agente Virtual de Customer Success</h1>
+                        <p>Atención postventa automatizada 24/7 • Respuestas instantáneas</p>
+                    </div>
+                </div>
+                <div class="chat-actions">
+                    <span class="mode-badge" id="aiModeIndicator">
+                        <i class="fa-solid fa-database"></i> Modo: Base de Conocimientos Local
+                    </span>
+                </div>
+            </header>
+
+            <!-- Chat Messages Log -->
+            <section class="messages-container" id="messagesContainer">
+                
+                <!-- Welcome Message from Bot -->
+                <div class="message bot-message">
+                    <div class="message-avatar">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>¡Hola! 👋 Bienvenido/a al centro de atención de <strong>TechStore Demo</strong>.</p>
+                        <p>Soy tu asistente virtual. ¿En qué puedo ayudarte hoy con tu compra, pedido o envío?</p>
+                        <div class="quick-pills">
+                            <button class="pill-btn" data-query="¿Cuál es el costo de envío?">🚚 Costos de Envío</button>
+                            <button class="pill-btn" data-query="¿Cómo rastrear mi orden?">📦 Rastreo de Pedido</button>
+                            <button class="pill-btn" data-query="¿Política de garantía?">🛡️ Garantía de Productos</button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Typing Indicator (Hidden by default) -->
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="message-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <!-- Chat Input Form -->
+            <footer class="chat-footer">
+                <form id="chatForm" class="chat-input-form">
+                    <input 
+                        type="text" 
+                        id="userInput" 
+                        placeholder="Escribe tu consulta sobre envíos, pagos, devoluciones..." 
+                        autocomplete="off" 
+                        required
+                    >
+                    <button type="submit" id="sendBtn" class="btn-send">
+                        <span>Enviar</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/knowledge.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
